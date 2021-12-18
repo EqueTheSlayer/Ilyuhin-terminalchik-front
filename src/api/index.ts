@@ -13,9 +13,8 @@ export async function reqApi(method: string, api?: string, body?: object,) {
   })
     .then(async res => {
       const data = await res.json();
-      if (data) {
-        return {data: data, statusCode: res.status}
-      }
+
+      return {data: data, statusCode: res.status}
     })
     .catch(err => {
       console.log(err)
