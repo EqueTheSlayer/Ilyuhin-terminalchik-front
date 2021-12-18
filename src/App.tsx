@@ -6,7 +6,7 @@ const App = function () {
   const [movies, setMovies] = useState([{title: '123'}]);
   useEffect(() => {
     void getMovies();
-  })
+  }, [])
 
   const getMovies = async () => {
     const pizda: any = await reqApi(reqTypes.GET, 'movie-list');
