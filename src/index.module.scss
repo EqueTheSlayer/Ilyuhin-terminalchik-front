@@ -1,6 +1,22 @@
+@import "colors/index.module";
+@import "fonts/ubuntumono.css";
+
+* {
+  font-family: "Ubuntu Mono", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
 .App {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #232323;
+  color: $greenText;
 }

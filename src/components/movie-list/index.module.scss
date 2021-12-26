@@ -1,8 +1,6 @@
 .Movie {
-  display: flex;;
-
-  .Title {
-    width: 300px;
-    margin-right: 20px;
-  }
+  display: flex;
+  width: 400px;
+  max-width: 400px;
+  justify-content: space-between;
 }

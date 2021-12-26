@@ -1,16 +1,32 @@
+@import '../../colors/index.module';
+
 .Form {
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  flex-basis: 300px;
-  max-width: 300px;
-
-  & h1 {
-    font-weight: normal;
-    font-size: 16px;
-  }
+  flex-basis: 400px;
+  max-width: 400px;
 
   & input {
     margin-bottom: 20px;
+    border: 1px solid $greenText;
+    background: transparent;
+    color: $greenText;
+    height: 20px;
+    padding: 0;
+
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
   }
+
+  & button {
+    height: 20px;
+    color: $greenText;
+    background: transparent;
+    border: 1px solid $greenText;
+    font-size: 16px;
+  }
+
 }

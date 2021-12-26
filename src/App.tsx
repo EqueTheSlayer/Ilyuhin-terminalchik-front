@@ -36,10 +36,12 @@ const App = function () {
 
   return (
     <div className={styles.App}>
-      <MoviesContext.Provider value={moviesDefaultValue}>
-        <CreateMovie movies={movies}/>
-        <MovieList movies={movies}/>
-      </MoviesContext.Provider>
+      <div>
+        <MoviesContext.Provider value={moviesDefaultValue}>
+          <CreateMovie movies={movies}/>
+          <MovieList movies={movies}/>
+        </MoviesContext.Provider>
+      </div>
     </div>
   );
 };
