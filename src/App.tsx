@@ -3,6 +3,7 @@ import {MovieList} from "./components/movie-list";
 import {getMovieList} from "./services/movies/movies.api";
 import {CreateMovie} from "./components/create-movie";
 import {MovieModel} from "./models/movie-list/movie-list.model";
+import styles from "./index.module.scss";
 
 let moviesDefaultValue: MovieModel[] = [{
   title: '123',
@@ -18,7 +19,11 @@ const App = function () {
 
   useEffect(() => {
     void getMovies();
-  }, [moviesDefaultValue])
+  }, []);
+
+  useEffect(() => {
+    setMovies(moviesDefaultValue)
+  }, [MoviesContext])
 
   const getMovies = async () => {
     const movies: any = await getMovieList();
@@ -30,10 +35,10 @@ const App = function () {
   }
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <MoviesContext.Provider value={moviesDefaultValue}>
-        <MovieList movies={movies}/>
         <CreateMovie movies={movies}/>
+        <MovieList movies={movies}/>
       </MoviesContext.Provider>
     </div>
   );

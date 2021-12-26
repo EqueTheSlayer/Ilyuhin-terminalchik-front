@@ -27,10 +27,10 @@ export const CreateMovie = (props: {movies: MovieModel[]}) => {
 
   return (
     <form onSubmit={formedMovie} className={styles.Form}>
-      <h1>Создать фильм</h1>
+      <h1>Добавить фильм</h1>
       <Input name={'title'} type={'text'}/>
-      <Input name={'rating'} type={'number'} max={10}/>
-      <button type={"submit"}>Создать</button>
+      <Input name={'rating'} type={'number'} max={10} step={0.1}/>
+      <button type={"submit"}>Добавить</button>
     </form>
   )
 }

@@ -1,9 +1,14 @@
 .Form {
-  margin-top: 30px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   flex-basis: 300px;
   max-width: 300px;
+
+  & h1 {
+    font-weight: normal;
+    font-size: 16px;
+  }
 
   & input {
     margin-bottom: 20px;
