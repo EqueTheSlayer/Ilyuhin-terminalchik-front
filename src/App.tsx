@@ -1,27 +1,40 @@
 import React, {useEffect, useState} from 'react';
-import {reqApi} from './api';
-import {reqTypes} from "./api/api.constants";
+import {MovieList} from "./components/movie-list";
+import {getMovieList} from "./services/movies/movies.api";
+import {CreateMovie} from "./components/create-movie";
+import {MovieModel} from "./models/movie-list/movie-list.model";
+
+let moviesDefaultValue: MovieModel[] = [{
+  title: '123',
+  _id: '1232131212',
+  image: '13213121312',
+  rating: 1
+}];
+
+export const MoviesContext = React.createContext(moviesDefaultValue);
 
 const App = function () {
-  const [movies, setMovies] = useState([{title: '123'}]);
+  const [movies, setMovies] = useState(moviesDefaultValue);
+
   useEffect(() => {
     void getMovies();
-  }, [])
+  }, [moviesDefaultValue])
 
   const getMovies = async () => {
-    const pizda: any = await reqApi(reqTypes.GET, 'movie-list');
+    const movies: any = await getMovieList();
 
-    if (pizda.statusCode === 200) {
-      setMovies(pizda.data);
+    if (movies.statusCode === 200) {
+      moviesDefaultValue = movies.data;
+      setMovies(moviesDefaultValue);
     }
   }
 
   return (
     <div className="App">
-      {movies.map((movie, index) => (
-          <div key={index}>{movie.title}</div>
-        )
-      )}
+      <MoviesContext.Provider value={moviesDefaultValue}>
+        <MovieList movies={movies}/>
+        <CreateMovie movies={movies}/>
+      </MoviesContext.Provider>
     </div>
   );
 };

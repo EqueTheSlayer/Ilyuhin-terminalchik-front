@@ -6,7 +6,8 @@ export function getUrl(api?: string): string {
 
 export async function reqApi(method: string, api?: string, body?: object,) {
   return fetch(getUrl(api), {
-    method: JSON.stringify(body),
+    method: method,
+    body: JSON.stringify(body),
     headers: {
       'Content-Type': 'application/json'
     }
@@ -15,8 +16,5 @@ export async function reqApi(method: string, api?: string, body?: object,) {
       const data = await res.json();
 
       return {data: data, statusCode: res.status}
-    })
-    .catch(err => {
-      console.log(err)
     });
 }
