@@ -6,8 +6,8 @@ export const MovieList = (props: {movies: MovieModel[]}) => {
     <div>
       {props.movies.map((movie, index) => (
         <div key={index} className={styles.Movie}>
-          <div className={styles.Title}>{movie.title}</div>
-          <div>{movie.rating}</div>
+          <div className={styles.Title}>[{movie.title}]</div>
+          <div>[{movie.rating}]</div>
         </div>
       ))}
     </div>

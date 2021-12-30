@@ -4,6 +4,11 @@
 * {
   font-family: "Ubuntu Mono", sans-serif;
   box-sizing: border-box;
+
+  &::selection {
+    background: $greenText;
+    color: $backgroundGrey;
+  }
 }
 
 body {
@@ -17,6 +22,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: #232323;
+  background: $backgroundGrey;
   color: $greenText;
 }

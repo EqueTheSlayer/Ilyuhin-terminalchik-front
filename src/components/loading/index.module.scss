@@ -1,0 +1,108 @@
+@import "../../colors/index.module";
+
+body {
+  background-color: #000000;
+  margin: 0;
+}
+
+.Terminal{
+  animation-name: fadeOut;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+  animation-delay: 9000ms;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: $backgroundGrey;
+}
+
+p {
+  display: block;
+  width: 0;
+  margin: 0;
+  font-size:1.2rem;
+  color: #20C20E;
+  overflow: hidden;
+  font-family: monospace;
+  white-space: nowrap;
+  animation-name: writeText;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+.Delay1 {
+  animation-delay: 500ms;
+}
+.Delay2 {
+  animation-delay: 2000ms;
+}
+.Delay3 {
+  animation-delay: 3000ms;
+}
+.Delay4 {
+  animation-delay: 8000ms;
+}
+
+@keyframes writeText {
+  from {
+    width: 0;
+  }
+  to {
+    width: 230px;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#loader {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+}
+
+#loaded {
+  height: 2px;
+  width: 0;
+  background-color: #20C20E;
+  animation-name: load;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes load {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 70%;
+  }
+  70% {
+    width: 100%;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
