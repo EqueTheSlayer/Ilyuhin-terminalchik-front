@@ -5,6 +5,7 @@ import {CreateMovie} from "./components/create-movie";
 import {MovieModel} from "./models/movie-list/movie-list.model";
 import styles from "./index.module.scss";
 import {Loading} from "./components/loading";
+import {TerminalInput} from "./components/terminal-input";
 
 let moviesDefaultValue: MovieModel[] = [{
   title: '123',
@@ -39,6 +40,7 @@ const App = function () {
     <div className={styles.App}>
       <div>
         <Loading />
+        <TerminalInput />
         <MoviesContext.Provider value={moviesDefaultValue}>
           <CreateMovie movies={movies}/>
           <MovieList movies={movies}/>
