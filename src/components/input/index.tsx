@@ -1,3 +1,5 @@
+import {ChangeEvent} from "react";
+
 export const Input = (props:
                         {
                           name: string,
@@ -5,6 +7,7 @@ export const Input = (props:
                           max?: number,
                           step?: number,
                           placeholder: string,
+                          onChange?: (event: ChangeEvent<HTMLInputElement>) => void
                         }
 ) => {
   return (
@@ -15,6 +18,6 @@ export const Input = (props:
       min={0}
       step={props.step}
       placeholder={props.placeholder}
-    />
+      onChange={props.onChange}/>
   )
 }

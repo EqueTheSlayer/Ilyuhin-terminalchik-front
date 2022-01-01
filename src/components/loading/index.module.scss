@@ -17,6 +17,7 @@ body {
   right: 0;
   z-index: 100;
   background: $backgroundGrey;
+  pointer-events: none;
 }
 
 p {
