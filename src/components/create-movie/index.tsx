@@ -2,9 +2,10 @@ import {Input} from "../input";
 import {MovieModel} from "../../models/movie-list/movie-list.model";
 import {createMovie} from "../../services/movies/movies.api";
 import styles from './index.module.scss';
-import React from "react";
+import React, {useState} from "react";
 
 export const CreateMovie = (props: {movies: MovieModel[], updateMovies: React.Dispatch<React.SetStateAction<MovieModel[]>>}) => {
+  const [createSuccess, setCreateSuccess] = useState<boolean>(false);
 
   const formedMovie = async (e: any) => {
     e.preventDefault();
@@ -17,17 +18,29 @@ export const CreateMovie = (props: {movies: MovieModel[], updateMovies: React.Di
     const movie = await createMovie(movieInfo);
 
     if (movie.statusCode === 200 || movie.statusCode === 201) {
+      movieCreateSuccess()
       props.updateMovies([...props.movies, movieInfo]);
       e.target.title.value = '';
       e.target.rating.value = '';
     }
   }
 
+  const movieCreateSuccess = () => {
+    setCreateSuccess(true);
+
+    setTimeout(() => {
+      setCreateSuccess(false);
+    }, 1500);
+  }
+
   return (
-    <form onSubmit={formedMovie} className={styles.Form}>
-      <Input name={'title'} type={'text'} placeholder={'Название_'}/>
-      <Input name={'rating'} type={'number'} max={10} step={0.1} placeholder={'Оценка_'}/>
-      <button type={"submit"}>[Добавить фильм]</button>
-    </form>
+    <div>
+      {!createSuccess && <form onSubmit={formedMovie} className={styles.Form}>
+        <Input name={'title'} type={'text'} placeholder={'Название_'}/>
+        <Input name={'rating'} type={'number'} max={10} step={0.1} placeholder={'Оценка_'}/>
+        <button type={"submit"}>[Добавить фильм]</button>
+      </form>}
+      {createSuccess && <div>Фильм был успешно добавлен</div>}
+    </div>
   )
 }
