@@ -1,4 +1,4 @@
-import {ChangeEvent} from "react";
+import {ChangeEvent, KeyboardEvent} from "react";
 
 export const Input = (props:
                         {
@@ -7,7 +7,7 @@ export const Input = (props:
                           max?: number,
                           step?: number,
                           placeholder: string,
-                          onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+                          onEnter?: (event: KeyboardEvent<HTMLInputElement>) => void
                         }
 ) => {
   return (
@@ -18,6 +18,6 @@ export const Input = (props:
       min={0}
       step={props.step}
       placeholder={props.placeholder}
-      onChange={props.onChange}/>
+      onKeyDown={props.onEnter}/>
   )
 }

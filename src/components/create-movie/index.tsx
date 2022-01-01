@@ -1,12 +1,10 @@
 import {Input} from "../input";
-import {useContext} from "react";
-import {MoviesContext} from '../../App';
 import {MovieModel} from "../../models/movie-list/movie-list.model";
 import {createMovie} from "../../services/movies/movies.api";
 import styles from './index.module.scss';
+import React from "react";
 
-export const CreateMovie = (props: {movies: MovieModel[]}) => {
-  const setUpdatedMovies = useContext(MoviesContext);
+export const CreateMovie = (props: {movies: MovieModel[], updateMovies: React.Dispatch<React.SetStateAction<MovieModel[]>>}) => {
 
   const formedMovie = async (e: any) => {
     e.preventDefault();
@@ -19,7 +17,7 @@ export const CreateMovie = (props: {movies: MovieModel[]}) => {
     const movie = await createMovie(movieInfo);
 
     if (movie.statusCode === 200 || movie.statusCode === 201) {
-      setUpdatedMovies.push(movieInfo);
+      props.updateMovies([...props.movies, movieInfo]);
       e.target.title.value = '';
       e.target.rating.value = '';
     }
