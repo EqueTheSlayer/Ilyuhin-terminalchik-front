@@ -2,18 +2,18 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../store";
 
 interface TerminalInputState {
-  value: string[]
+  value: string
 }
 
 const initialState: TerminalInputState = {
-  value: ['']
+  value: ''
 }
 
 export const terminalInputSlice = createSlice({
   name: 'terminalInput',
   initialState,
   reducers: {
-    setNewInputCommand: ((state, action: PayloadAction<string[]>) => {
+    setNewInputCommand: ((state, action: PayloadAction<string>) => {
       state.value = action.payload
     })
   }
