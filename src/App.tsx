@@ -16,7 +16,7 @@ const App = function () {
   const terminal = useAppSelector((state => state.terminalInput.value));
   const CommandToNode = useMemo(() => {
     return {
-      [`${Commands.SET} movie_list`]: <CreateMovie movies={movies} updateMovies={setMovies}/>,
+      [`${Commands.SET} movie_list`]: <CreateMovie updateMovies={setMovies}/>,
       [`${Commands.SHOW} movie_list`]: <MovieList movies={movies}/>,
       'error': <ErrorCommand command={terminal}/>
     }

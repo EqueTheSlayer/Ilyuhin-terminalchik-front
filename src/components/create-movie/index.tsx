@@ -4,7 +4,7 @@ import {createMovie} from "../../services/movies/movies.api";
 import styles from './index.module.scss';
 import React, {useState} from "react";
 
-export const CreateMovie = (props: {movies: MovieModel[], updateMovies: React.Dispatch<React.SetStateAction<MovieModel[]>>}) => {
+export const CreateMovie = (props: {updateMovies: React.Dispatch<React.SetStateAction<MovieModel[]>>}) => {
   const [createSuccess, setCreateSuccess] = useState<boolean>(false);
   const [newMovieTitle, setNewMovieTitle] = useState<string>()
 
@@ -21,7 +21,7 @@ export const CreateMovie = (props: {movies: MovieModel[], updateMovies: React.Di
     if (movie.statusCode === 200 || movie.statusCode === 201) {
       setNewMovieTitle(movieInfo.title);
       movieCreateSuccess()
-      props.updateMovies([...props.movies, movieInfo]);
+      props.updateMovies(prevState => [...prevState, movieInfo]);
       e.target.title.value = '';
       e.target.rating.value = '';
     }
